@@ -3,134 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Sumerah | A Tribute</title>
+    <title>Sumerah | Mere Khayal Mein</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Noto+Serif+Devanagari:wght@400;700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        :root { --primary: #ff3366; }
+        :root { --accent: #ff0055; }
         body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .playfair { font-family: 'Playfair Display', serif; }
+        .hindi { font-family: 'Noto Serif Devanagari', serif; }
 
-        /* 1. Animated Mesh Background */
-        .bg-mesh {
+        /* Animated Gradient Background */
+        .bg-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #050505 100%);
-            z-index: -1;
-        }
-        .bg-glow {
-            position: fixed; width: 60vw; height: 60vw;
-            background: radial-gradient(circle, rgba(255, 51, 102, 0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%; z-index: -1; filter: blur(80px);
+            background: radial-gradient(circle at 50% 50%, #1a0510 0%, #000000 100%);
+            z-index: -2;
         }
 
-        /* 2. Massive Text Styling */
-        .huge-text { font-size: clamp(4rem, 15vw, 12rem); line-height: 0.9; font-weight: 800; letter-spacing: -0.05em; }
-        .outline-text { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2); }
+        .floating-light {
+            position: fixed; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 85, 0.15) 0%, transparent 70%);
+            filter: blur(60px); z-index: -1; border-radius: 50%;
+        }
 
-        /* 3. Smooth Scroll */
+        /* Typography */
+        .huge-text { font-size: clamp(3rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; }
+        .glow-text { text-shadow: 0 0 20px rgba(255, 0, 85, 0.5); }
+        .outline { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); }
+
+        /* Smooth Scroll */
         html.lenis { height: auto; }
         .lenis-smooth { scroll-behavior: auto !important; }
-
-        /* 4. Text Reveal Effect */
-        .char { display: inline-block; transform: translateY(100%); opacity: 0; }
     </style>
 </head>
 <body>
 
-    <div class="bg-mesh"></div>
-    <div class="bg-glow" id="glow1"></div>
-    <div class="bg-glow" id="glow2" style="right: -10%; top: -10%;"></div>
-
-    <section class="h-screen w-full flex items-center justify-center p-6 relative overflow-hidden">
-        <div class="text-center z-10">
-            <p class="uppercase tracking-[0.5em] text-[10px] mb-8 opacity-40 translate-y-10 reveal">An Unspoken Vibe</p>
-            <h1 class="huge-text playfair italic mb-10 reveal">Sumerah<span class="text-[#ff3366]">.</span></h1>
-            <p class="text-lg md:text-2xl font-light opacity-60 reveal">The world is better with you in it.</p>
-        </div>
-    </section>
-
-    <section class="min-h-screen w-full flex flex-col justify-center p-6 md:p-24">
-        <h2 class="huge-text outline-text mb-10 opacity-20">RARE.</h2>
-        <div class="max-w-5xl">
-            <p class="text-4xl md:text-7xl font-bold leading-none mb-12 scrub-text">
-                I don't just <span class="text-[#ff3366]">admire</span> you, I respect the soul you carry. 
-            </p>
-            <p class="text-xl md:text-3xl text-gray-500 max-w-2xl reveal">
-                Building this for you was the only way I could express how truly unique you are to me.
-            </p>
-        </div>
-    </section>
-
-    <section class="min-h-screen w-full flex items-center justify-center bg-white/5 backdrop-blur-3xl">
-        <div class="text-center p-10">
-            <h3 class="text-6xl md:text-9xl playfair font-black mb-10 reveal">Infinite Grace.</h3>
-            <div class="h-1 w-32 bg-[#ff3366] mx-auto mb-10"></div>
-            <p class="text-gray-400 text-lg md:text-2xl max-w-xl mx-auto reveal">
-                Sumerah, your energy is a quiet storm—gentle yet powerful enough to leave a mark on everyone you meet.
-            </p>
-        </div>
-    </section>
+    <div class="bg-container"></div>
+    <div class="floating-light" id="light1"></div>
+    <div class="floating-light" id="light2" style="right: 0; top: 0;"></div>
 
     <section class="h-screen w-full flex flex-col items-center justify-center text-center p-6">
-        <div class="huge-text outline-text absolute opacity-5 pointer-events-none">ETHEREAL</div>
-        <div class="z-10">
-            <h2 class="text-5xl md:text-8xl playfair italic mb-6 reveal">Stay exactly as <span class="text-[#ff3366]">you</span> are.</h2>
-            <p class="text-gray-500 tracking-[0.4em] uppercase text-[10px] mt-20">Crafted with admiration for Sumerah</p>
+        <p class="uppercase tracking-[0.8em] text-[10px] mb-6 opacity-60 reveal">It was always you</p>
+        <h1 class="huge-text playfair italic glow-text reveal">Sumerah<span class="text-[#ff0055]">.</span></h1>
+        <div class="mt-10 h-[1px] w-20 bg-[#ff0055] reveal"></div>
+    </section>
+
+    <section class="min-h-screen w-full flex flex-col justify-center p-8 md:p-24">
+        <div class="max-w-4xl">
+            <p class="text-pink-500 text-sm tracking-widest mb-4 reveal">MERE ALFAAZ...</p>
+            <h2 class="text-4xl md:text-7xl font-bold hindi leading-tight reveal">
+                "Log kehte hain khoobsurat hai chaand,<br>
+                Shayad unhone tumhe <span class="text-[#ff0055]">dekha hi nahi.</span>"
+            </h2>
+            <p class="mt-12 text-2xl md:text-4xl italic playfair text-gray-400 reveal">
+                You’re not just a person, you’re a feeling that words can't capture.
+            </p>
+        </div>
+    </section>
+
+    <section class="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-white/5 backdrop-blur-xl">
+        <div class="absolute outline huge-text opacity-10 whitespace-nowrap" id="scroll-text">
+            ADDICTIVE • UNIQUE • SUMERAH • ADDICTIVE • UNIQUE
+        </div>
+        <div class="z-10 text-center px-6">
+            <h3 class="text-5xl md:text-8xl font-black mb-8 reveal">Pure Magic.</h3>
+            <p class="text-xl md:text-3xl font-light max-w-2xl mx-auto reveal leading-relaxed">
+                Tera hona hi kaafi hai, mere chehre ki muskurahat ke liye. <br>
+                <span class="text-[#ff0055] font-bold">Absolutely obsessed with your vibe.</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="min-h-screen w-full flex flex-col justify-center items-center text-center p-8">
+        <div class="max-w-3xl">
+            <h2 class="text-5xl md:text-8xl playfair font-black mb-12 reveal">Be Mine?</h2>
+            <p class="text-2xl hindi mb-10 reveal">
+                Tum meri wo khwahish ho jo main har baar maangta hoon.
+            </p>
+            <div class="bg-[#ff0055] text-white px-10 py-4 rounded-full text-xl font-bold hover:scale-110 transition-transform cursor-pointer reveal">
+                Just saying... You're the one.
+            </div>
+        </div>
+    </section>
+
+    <section class="h-[60vh] w-full flex items-center justify-center">
+        <div class="text-center">
+            <h4 class="huge-text outline reveal">SUMERAH</h4>
+            <p class="mt-10 tracking-[0.5em] text-xs opacity-40">Tujhse hi har subah, tujhse hi har shaam.</p>
         </div>
     </section>
 
     <script>
-        // 1. Smooth Scroll Init
+        // Smooth Scroll
         const lenis = new Lenis();
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // 2. GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        // Background Glow Movement
-        gsap.to("#glow1", {
-            x: '30vw', y: '20vh', duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut"
-        });
-        gsap.to("#glow2", {
-            x: '-20vw', y: '40vh', duration: 15, repeat: -1, yoyo: true, ease: "sine.inOut"
+        // Lights Animation
+        gsap.to("#light1", { x: '50vw', y: '30vh', duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        gsap.to("#light2", { x: '-40vw', y: '20vh', duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+        // Scroll Text Effect
+        gsap.to("#scroll-text", {
+            xPercent: -50,
+            scrollTrigger: { trigger: "#scroll-text", scrub: 1 }
         });
 
-        // Reveal animations for all sections
+        // Reveal animations
         gsap.utils.toArray(".reveal").forEach(el => {
             gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 90%",
-                },
-                y: 50, opacity: 0, duration: 1.5, ease: "expo.out"
+                scrollTrigger: { trigger: el, start: "top 90%" },
+                y: 100, opacity: 0, duration: 1.5, ease: "expo.out"
             });
-        });
-
-        // Scrubbing text animation
-        gsap.from(".scrub-text", {
-            scrollTrigger: {
-                trigger: ".scrub-text",
-                start: "top 80%",
-                end: "top 20%",
-                scrub: 1
-            },
-            opacity: 0.1, y: 30, duration: 1
-        });
-
-        // Huge Background Text Move
-        gsap.to(".outline-text", {
-            xPercent: -10,
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 2
-            }
         });
     </script>
 </body>
