@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Sumerah</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg,#08140d,#102819,#183524);
+      color: white;
+    }.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.content {
+  z-index: 5;
+  max-width: 800px;
+  padding: 20px;
+  opacity: 0;
+  animation: textShow 5s infinite;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-family: Georgia, serif;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.gate {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(10,20,10,0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 1.5s ease;
+  z-index: 4;
+}
+
+.left {
+  left: 0;
+  animation: gateLeft 5s infinite;
+}
+
+.right {
+  right: 0;
+  animation: gateRight 5s infinite;
+}
+
+.garden {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(82,166,88,.3), transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(255,220,120,.2), transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(120,255,150,.15), transparent 25%);
+  z-index: 1;
+}
+
+@keyframes gateLeft {
+  0%,15% { transform: translateX(0); }
+  30%,55% { transform: translateX(-100%); }
+  70% { transform: translateX(0); }
+  85%,100% { transform: translateX(-100%); }
+}
+
+@keyframes gateRight {
+  0%,15% { transform: translateX(0); }
+  30%,55% { transform: translateX(100%); }
+  70% { transform: translateX(0); }
+  85%,100% { transform: translateX(100%); }
+}
+
+@keyframes textShow {
+  0%,18% { opacity: 0; transform: scale(.95); }
+  30%,55% { opacity: 1; transform: scale(1); }
+  70% { opacity: 0; }
+  85%,100% { opacity: 1; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="garden"></div><div class="content" id="content">
+  <h1 id="title">For Sumerah</h1>
+  <p id="subtitle">A beautiful entrance to something unforgettable.</p>
+</div>
+
+<div class="gate left"></div>
+<div class="gate right"></div>
+
+  </div>  <script>
+    const scenes = [
+      {
+        title: 'For Sumerah',
+        subtitle: 'A beautiful entrance to something unforgettable.'
+      },
+      {
+        title: 'Every gate opens for a reason',
+        subtitle: 'Some moments are worth a cinematic reveal.'
+      },
+      {
+        title: 'You are the final destination',
+        subtitle: 'Graceful. Calm. Impossible to ignore.'
+      }
+    ];
+
+    let index = 0;
+    const title = document.getElementById('title');
+    const subtitle = document.getElementById('subtitle');
+
+    setInterval(() => {
+      index = (index + 1) % scenes.length;
+      title.innerText = scenes[index].title;
+      subtitle.innerText = scenes[index].subtitle;
+    }, 5000);
+  </script></body>
+</html>
