@@ -2,13 +2,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Sumerah</title>
+  <title>Urban Jungle For Sumerah</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       overflow: hidden;
-      background: linear-gradient(135deg,#08140d,#102819,#183524);
+      background: linear-gradient(135deg,#0a0f09,#162013,#26351f);
       color: white;
     }.scene {
   position: relative;
@@ -45,8 +45,10 @@ p {
   top: 0;
   width: 50%;
   height: 100%;
-  background: rgba(10,20,10,0.95);
-  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(211,169,79,.85), rgba(165,124,45,.9));
+  border: 2px solid rgba(60,40,10,.35);
+  box-shadow: inset 0 0 0 8px rgba(255,230,170,.08);
   transition: transform 1.5s ease;
   z-index: 4;
 }
@@ -65,9 +67,10 @@ p {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 80%, rgba(82,166,88,.3), transparent 20%),
-    radial-gradient(circle at 80% 30%, rgba(255,220,120,.2), transparent 20%),
-    radial-gradient(circle at 50% 50%, rgba(120,255,150,.15), transparent 25%);
+    radial-gradient(circle at 15% 75%, rgba(90,180,90,.35), transparent 18%),
+    radial-gradient(circle at 85% 20%, rgba(255,210,120,.18), transparent 16%),
+    radial-gradient(circle at 50% 50%, rgba(120,255,150,.12), transparent 24%),
+    linear-gradient(180deg, rgba(42,62,32,.4), rgba(10,18,10,.55));
   z-index: 1;
 }
 
@@ -104,10 +107,12 @@ p {
 <div class="gate left"></div>
 <div class="gate right"></div>
 
+<div style="position:absolute;width:120px;height:240px;border:6px solid rgba(20,20,20,.35);border-radius:28px;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;background:rgba(20,30,20,.15);backdrop-filter:blur(2px);"></div>
+
   </div>  <script>
     const scenes = [
       {
-        title: 'For Sumerah',
+        title: 'Welcome Sumerah,'
         subtitle: 'A beautiful entrance to something unforgettable.'
       },
       {
