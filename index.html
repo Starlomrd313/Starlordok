@@ -1,138 +1,64 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urban Jungle For Sumerah</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-      background: linear-gradient(135deg,#0a0f09,#162013,#26351f);
-      color: white;
-    }.scene {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-.content {
-  z-index: 5;
-  max-width: 800px;
-  padding: 20px;
-  opacity: 0;
-  animation: textShow 5s infinite;
-}
-
-h1 {
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-family: Georgia, serif;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.gate {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background:
-    linear-gradient(180deg, rgba(211,169,79,.85), rgba(165,124,45,.9));
-  border: 2px solid rgba(60,40,10,.35);
-  box-shadow: inset 0 0 0 8px rgba(255,230,170,.08);
-  transition: transform 1.5s ease;
-  z-index: 4;
-}
-
-.left {
-  left: 0;
-  animation: gateLeft 5s infinite;
-}
-
-.right {
-  right: 0;
-  animation: gateRight 5s infinite;
-}
-
-.garden {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 15% 75%, rgba(90,180,90,.35), transparent 18%),
-    radial-gradient(circle at 85% 20%, rgba(255,210,120,.18), transparent 16%),
-    radial-gradient(circle at 50% 50%, rgba(120,255,150,.12), transparent 24%),
-    linear-gradient(180deg, rgba(42,62,32,.4), rgba(10,18,10,.55));
-  z-index: 1;
-}
-
-@keyframes gateLeft {
-  0%,15% { transform: translateX(0); }
-  30%,55% { transform: translateX(-100%); }
-  70% { transform: translateX(0); }
-  85%,100% { transform: translateX(-100%); }
-}
-
-@keyframes gateRight {
-  0%,15% { transform: translateX(0); }
-  30%,55% { transform: translateX(100%); }
-  70% { transform: translateX(0); }
-  85%,100% { transform: translateX(100%); }
-}
-
-@keyframes textShow {
-  0%,18% { opacity: 0; transform: scale(.95); }
-  30%,55% { opacity: 1; transform: scale(1); }
-  70% { opacity: 0; }
-  85%,100% { opacity: 1; }
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sumerah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #0f172a; color: white; overflow-x: hidden; }
+        .cursive { font-family: 'Dancing Script', cursive; }
+        .gradient-text { background: linear-gradient(to right, #f472b6, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+    </style>
 </head>
 <body>
-  <div class="scene">
-    <div class="garden"></div><div class="content" id="content">
-  <h1 id="title">For Sumerah</h1>
-  <p id="subtitle">A beautiful entrance to something unforgettable.</p>
-</div>
 
-<div class="gate left"></div>
-<div class="gate right"></div>
+    <section class="h-screen flex flex-col justify-center items-center text-center p-5">
+        <h1 data-aos="fade-down" class="text-6xl md:text-8xl cursive gradient-text mb-4">Sumerah</h1>
+        <p data-aos="fade-up" data-aos-delay="300" class="text-lg text-gray-400 tracking-widest uppercase">A digital space dedicated to a special soul.</p>
+        <div class="mt-10 floating">
+            <svg class="w-10 h-10 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+        </div>
+    </section>
 
-<div style="position:absolute;width:120px;height:240px;border:6px solid rgba(20,20,20,.35);border-radius:28px;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;background:rgba(20,30,20,.15);backdrop-filter:blur(2px);"></div>
+    <section class="min-h-screen flex items-center justify-center p-10">
+        <div class="max-w-2xl text-center">
+            <h2 data-aos="zoom-in" class="text-4xl cursive text-pink-300 mb-6">"You aren't just a name..."</h2>
+            <p data-aos="fade-right" class="text-xl leading-relaxed text-gray-300">
+                To the world, you might be Sumerah. But to me, you’re that quiet spark of joy in a busy day. 
+                I wanted to build something as unique as the vibe you carry.
+            </p>
+        </div>
+    </section>
 
-  </div>  <script>
-    const scenes = [
-      {
-        title: 'Welcome Sumerah,'
-        subtitle: 'A beautiful entrance to something unforgettable.'
-      },
-      {
-        title: 'Every gate opens for a reason',
-        subtitle: 'Some moments are worth a cinematic reveal.'
-      },
-      {
-        title: 'You are the final destination',
-        subtitle: 'Graceful. Calm. Impossible to ignore.'
-      }
-    ];
+    <section class="min-h-screen bg-slate-900/50 py-20 px-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <div data-aos="flip-left" class="bg-slate-800 p-8 rounded-2xl border border-pink-500/20 shadow-xl">
+                <h3 class="text-2xl text-pink-400 mb-4 font-bold">The Vibe</h3>
+                <p class="text-gray-400">Some people make the room brighter just by walking in. You’re definitely one of them.</p>
+            </div>
+            <div data-aos="flip-right" data-aos-delay="200" class="bg-slate-800 p-8 rounded-2xl border border-orange-500/20 shadow-xl">
+                <h3 class="text-2xl text-orange-400 mb-4 font-bold">The Presence</h3>
+                <p class="text-gray-400">Even in silence, your energy speaks volumes. It's rare, and it's beautiful.</p>
+            </div>
+        </div>
+    </section>
 
-    let index = 0;
-    const title = document.getElementById('title');
-    const subtitle = document.getElementById('subtitle');
+    <section class="h-screen flex flex-col justify-center items-center text-center p-5 bg-gradient-to-t from-pink-900/20 to-transparent">
+        <h2 data-aos="fade-up" class="text-5xl cursive mb-8">No pressure, just appreciation.</h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="max-w-md text-gray-400 mb-10">
+            Just wanted to let you know that you are seen, you are valued, and you are incredible exactly as you are.
+        </p>
+        <footer class="text-sm text-gray-600 mt-20">Built with ⚡ and a lot of respect for Sumerah.</footer>
+    </section>
 
-    setInterval(() => {
-      index = (index + 1) % scenes.length;
-      title.innerText = scenes[index].title;
-      subtitle.innerText = scenes[index].subtitle;
-    }, 5000);
-  </script></body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: false });
+    </script>
+</body>
 </html>
