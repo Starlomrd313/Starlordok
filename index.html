@@ -3,246 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 NEVER REPEAT JOKES - Live APIs 🌟</title>
+    <title>😂 Hindi Jokes Never Repeat 😂</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:'Poppins',sans-serif;
+            background:linear-gradient(-45deg,#ff9a9e,#fecfef,#fecfef,#ff9a9e);
+            background-size:400% 400%;
+            animation:gradientBG 12s ease infinite;
+            height:100vh;
+            display:flex;justify-content:center;align-items:center;overflow:hidden;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+        .container{
+            background:rgba(255,255,255,0.15);backdrop-filter:blur(25px);border-radius:30px;
+            padding:50px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.2);
+            border:1px solid rgba(255,255,255,0.3);max-width:700px;width:90%;
         }
-        .container {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(25px);
-            border-radius: 30px;
-            padding: 50px;
-            text-align: center;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            max-width: 650px;
-            width: 90%;
-        }
-        h1 {
-            font-size: 2.5em;
-            background: linear-gradient(45deg, #fff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        .source {
-            background: rgba(0,0,0,0.3);
-            color: #fff;
-            padding: 10px 25px;
-            border-radius: 25px;
-            margin: 20px auto;
-            font-weight: 600;
-            font-size: 1em;
-            max-width: 220px;
-        }
-        #jokeBox {
-            background: rgba(255,255,255,0.95);
-            padding: 40px;
-            border-radius: 25px;
-            margin: 30px 0;
-            min-height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4em;
-            line-height: 1.6;
-            color: #2c3e50;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            transition: all 0.4s ease;
-        }
-        .btn {
-            background: linear-gradient(45deg, #ff4757, #ff6b7a);
-            border: none;
-            padding: 20px 50px;
-            font-size: 1.2em;
-            font-weight: 700;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(255,71,87,0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(255,71,87,0.6);
-        }
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 25px;
-            color: rgba(255,255,255,0.95);
-            font-weight: 600;
-        }
-        .stat span {
-            font-size: 2.2em;
-            color: #ffd700;
-            display: block;
-        }
-        .credit {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1em;
-            font-weight: 700;
-        }
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+        h1{font-size:2.8em;background:linear-gradient(45deg,#fff,#ffeb3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;font-weight:800;}
+        .source{background:rgba(0,0,0,0.3);color:#fff;padding:12px 30px;border-radius:30px;margin:20px auto;font-weight:700;font-size:1.1em;max-width:250px;}
+        #jokeBox{background:rgba(255,255,255,0.95);padding:45px;border-radius:25px;margin:30px 0;min-height:180px;display:flex;align-items:center;justify-content:center;font-size:1.5em;line-height:1.7;color:#2c3e50;box-shadow:0 20px 50px rgba(0,0,0,0.15);transition:all 0.4s ease;}
+        .btn{background:linear-gradient(45deg,#ff5722,#ff8a50);border:none;padding:22px 60px;font-size:1.3em;font-weight:800;color:white;border-radius:50px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 15px 40px rgba(255,87,34,0.4);text-transform:uppercase;letter-spacing:2px;}
+        .btn:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 30px 60px rgba(255,87,34,0.6);}
+        .btn.loading{background:#666;cursor:not-allowed;opacity:0.7;}
+        .stats{display:flex;justify-content:space-around;margin-top:30px;color:rgba(255,255,255,0.95);font-weight:700;}
+        .stat span{font-size:2.5em;color:#ffeb3b;display:block;}
+        .credit{position:absolute;bottom:25px;right:25px;color:rgba(255,255,255,0.95);font-size:1.2em;font-weight:800;}
+        .particles{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1;}
     </style>
 </head>
 <body>
     <div class="particles" id="particles"></div>
     <div class="container">
-        <h1>🔥 LIVE JOKES FROM INTERNET 🔥</h1>
-        <div class="source" id="source">Click to Start!</div>
-        <div id="jokeBox">हर click पर नया joke internet से! 🌐✨</div>
-        <button class="btn" onclick="getJoke()">Next Joke 🚀</button>
+        <h1>🔥 HINDI JOKES API 🔥</h1>
+        <div class="source" id="source">Internet Se Live!</div>
+        <div id="jokeBox">Har Click = Naya Hindi Joke! 🌐😂</div>
+        <button class="btn" onclick="getHindiJoke()">Naya Joke 🚀</button>
         <div class="stats">
-            <div class="stat"><span id="today">0</span>Today</div>
+            <div class="stat"><span id="today">0</span>Aaj</div>
             <div class="stat"><span id="total">0</span>Total</div>
         </div>
     </div>
     <div class="credit">Made by Starlord✨</div>
 
     <script>
-        let todayCount = 0, totalCount = 0;
-        const usedJokes = new Set();
+        let today=0,total=0;const used=new Set();
 
-        // WORKING JOKE APIs (100% Working)
-        const APIs = [
-            'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single',
-            'https://official-joke-api.appspot.com/random_joke',
-            'https://icanhazdadjoke.com/',
-            'https://api.chucknorris.io/jokes/random',
-            'https://v2.jokeapi.dev/joke/Programming?type=single',
-            'https://punapi.sabir.pro/api/v1/puns/random'
+        // HINDI JOKES APIs + Sources
+        const hindiSources=[
+            // Hindi Jokes APIs
+            {url:'https://hindi-jokes-api.herokuapp.com/random',name:'HindiAPI'},
+            {url:'https://api.jokes18.com/jokes?lang=hi&limit=1',name:'Jokes18'},
+            
+            // Shayari APIs
+            {url:'https://api.alphashayari.in/shayari/random',name:'Shayari'},
+            {url:'https://shayari-api.herokuapp.com/api/shayari',name:'LoveShayari'},
+            
+            // Meme/Status APIs
+            {url:'https://api.quotes18.com/v1/quotes?lang=hi&limit=1',name:'Status'},
+            {url:'https://hindistatusapi.in/api/hindi-status',name:'HindiStatus'},
+            
+            // Funny Quotes
+            {url:'https://api.hindijokelove.com/jokes/random',name:'JokeLove'}
         ];
 
-        async function getJoke() {
-            const jokeBox = document.getElementById('jokeBox');
-            const btn = document.querySelector('.btn');
-            const source = document.getElementById('source');
-            
-            btn.innerHTML = 'Loading... 🌐';
-            btn.style.opacity = '0.7';
+        async function getHindiJoke(){
+            const box=document.getElementById('jokeBox'),btn=document.querySelector('.btn'),src=document.getElementById('source');
+            btn.innerHTML='Loading... 🌐';btn.classList.add('loading');
 
-            try {
-                const randomAPI = APIs[Math.floor(Math.random() * APIs.length)];
-                const response = await fetch(randomAPI, {
-                    headers: randomAPI.includes('icanhazdadjoke.com') ? 
-                        {'Accept': 'application/json'} : {}
-                });
+            try{
+                const api=hindiSources[Math.floor(Math.random()*hindiSources.length)];
+                const res=await fetch(api.url);
+                const data=await res.json();
                 
-                const data = await response.json();
-                let joke = '';
-                let sourceName = 'API';
-
-                if (randomAPI.includes('jokeapi.dev')) {
-                    joke = data.joke;
-                    sourceName = 'JokeAPI';
-                } else if (randomAPI.includes('icanhazdadjoke.com')) {
-                    joke = data.joke;
-                    sourceName = 'DadJokes';
-                } else if (randomAPI.includes('chucknorris.io')) {
-                    joke = data.value;
-                    sourceName = 'Chuck Norris';
-                } else if (randomAPI.includes('punapi')) {
-                    joke = data.joke;
-                    sourceName = 'Puns';
-                } else {
-                    joke = data.setup + '\n\n' + data.punchline;
-                    sourceName = 'Random';
-                }
-
-                // Clean and enhance
-                joke = joke.replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+                let joke='',sourceName=api.name;
                 
-                // Skip if too short or duplicate
-                if (joke.length > 15 && !usedJokes.has(joke)) {
-                    usedJokes.add(joke);
-                    jokeBox.textContent = joke + ' 😂✨';
-                    source.textContent = sourceName;
-                } else {
-                    return getJoke(); // Try again
-                }
-
-            } catch (error) {
-                jokeBox.textContent = "Server busy! 😅\nदोस्ती का मतलब - तेरी हर बेवकूफी में मेरा हाथ होना! 🤝";
-                source.textContent = 'Backup';
+                // Parse different API formats
+                if(api.url.includes('shayari')){joke=data.shayari||data.data||data[0];}
+                else if(api.url.includes('status')){joke=data.status||data.quote||data.data;}
+                else{joke=data.joke||data.message||data[0];}
+                
+                // Clean & Hindi enhance
+                joke=joke.replace(/\\n/g,'\n').replace(/&quot;/g,'"').trim();
+                
+                if(joke.length>20&&!used.has(joke)){
+                    used.add(joke);
+                    box.innerHTML=joke+' <span style="font-size:0.8em;">😂🔥</span>';
+                    src.textContent=sourceName;
+                }else{return getHindiJoke();}
+                
+            }catch(e){
+                // Backup Hindi jokes from different sources
+                const backups=[
+                    "Boss: Kal late kyun aaye?\nMain: Traffic tha sir!\nBoss: Aaj bhi traffic hoga?\nMain: Haan sir, main 9 baje aaunga! 😂",
+                    "Doctor: Aapko diabetes hai!\nPatient: Kitna serious hai?\nDoctor: Bahut! Aapko sweet khana band karna hoga!\nPatient: Arre toh main toh doctor ban gaya! 😎",
+                    "Ladka: Main tumse pyar karta hun!\nLadki: Kitna?\nLadka: Bahut!\nLadki: Kitna bahut?\nLadka: 2+2=?\nLadki: 4!\nLadka: Haan utna! 🤣",
+                    "Pappu: Teacher ji, zindagi kya hai?\nTeacher: Beta, zindagi ek struggle hai!\nPappu: Toh fir meri toh life mein koi struggle hi nahi! 😜",
+                    "Dost: Bhai breakup ho gaya!\nMain: Kyun?\nDost: Usne kaha 'Tu badal gaya hai!'\nMain: Toh tu bol 'Haan main toh waise bhi superhero banne wala hun!' 🦸‍♂️"
+                ];
+                const backup=Math.floor(Math.random()*backups.length);
+                box.innerHTML=backups[backup];
+                src.textContent='Desi Backup 🔥';
             }
 
-            // Update counters
-            todayCount++;
-            totalCount++;
-            document.getElementById('today').textContent = todayCount;
-            document.getElementById('total').textContent = totalCount;
-
-            btn.innerHTML = 'Next Joke 🚀';
-            btn.style.opacity = '1';
-            animateJoke();
-            createParticles();
+            today++;total++;
+            document.getElementById('today').textContent=today;
+            document.getElementById('total').textContent=total;
+            btn.innerHTML='Naya Joke 🚀';btn.classList.remove('loading');
+            animate();particles();
         }
 
-        function animateJoke() {
-            const jokeBox = document.getElementById('jokeBox');
-            jokeBox.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                jokeBox.style.transform = 'scale(1)';
-            }, 150);
+        function animate(){
+            const box=document.getElementById('jokeBox');
+            box.style.transform='scale(0.95)';setTimeout(()=>box.style.transform='scale(1)',200);
         }
 
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for(let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 6px; height: 6px;
-                    background: #ffd700;
-                    border-radius: 50%;
-                    left: ${Math.random()*100}%;
-                    animation: float ${3+Math.random()*3}s linear infinite;
-                    opacity: 0.8;
-                `;
-                container.appendChild(particle);
-                setTimeout(() => particle.remove(), 6000);
+        function particles(){
+            const cont=document.getElementById('particles');
+            for(let i=0;i<30;i++){
+                const p=document.createElement('div');
+                p.style.cssText=`position:absolute;width:8px;height:8px;background:#ffeb3b;border-radius:50%;left:${Math.random()*100}%;animation:float ${2+Math.random()*4}s linear infinite;opacity:0.8;`;
+                cont.appendChild(p);setTimeout(()=>p.remove(),5000);
             }
         }
 
         // Auto start
-        setTimeout(getJoke, 1500);
-    </script>
-    <style>
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
+        setTimeout(getHindiJoke,2000);
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>@keyframes float{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20vh) scale(1.2);opacity:0;}}</style>
 </body>
-</html>
+        </html>
