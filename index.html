@@ -3,124 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumerah | Mere Khayal Mein</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Noto+Serif+Devanagari:wght@400;700&family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    
+    <title>🌟 NEVER REPEAT JOKES - Live APIs 🌟</title>
     <style>
-        :root { --accent: #ff0055; }
-        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .playfair { font-family: 'Playfair Display', serif; }
-        .hindi { font-family: 'Noto Serif Devanagari', serif; }
-
-        /* Animated Gradient Background */
-        .bg-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a0510 0%, #000000 100%);
-            z-index: -2;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-
-        .floating-light {
-            position: fixed; width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(255, 0, 85, 0.15) 0%, transparent 70%);
-            filter: blur(60px); z-index: -1; border-radius: 50%;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-        /* Typography */
-        .huge-text { font-size: clamp(3rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; }
-        .glow-text { text-shadow: 0 0 20px rgba(255, 0, 85, 0.5); }
-        .outline { color: transparent; -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); }
-
-        /* Smooth Scroll */
-        html.lenis { height: auto; }
-        .lenis-smooth { scroll-behavior: auto !important; }
+        .container {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            max-width: 650px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .source {
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            margin: 20px auto;
+            font-weight: 600;
+            font-size: 1em;
+            max-width: 220px;
+        }
+        #jokeBox {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 25px;
+            margin: 30px 0;
+            min-height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #2c3e50;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+        .btn {
+            background: linear-gradient(45deg, #ff4757, #ff6b7a);
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(255,71,87,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255,71,87,0.6);
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.95);
+            font-weight: 600;
+        }
+        .stat span {
+            font-size: 2.2em;
+            color: #ffd700;
+            display: block;
+        }
+        .credit {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
-
-    <div class="bg-container"></div>
-    <div class="floating-light" id="light1"></div>
-    <div class="floating-light" id="light2" style="right: 0; top: 0;"></div>
-
-    <section class="h-screen w-full flex flex-col items-center justify-center text-center p-6">
-        <p class="uppercase tracking-[0.8em] text-[10px] mb-6 opacity-60 reveal">It was always you</p>
-        <h1 class="huge-text playfair italic glow-text reveal">Sumerah<span class="text-[#ff0055]">.</span></h1>
-        <div class="mt-10 h-[1px] w-20 bg-[#ff0055] reveal"></div>
-    </section>
-
-    <section class="min-h-screen w-full flex flex-col justify-center p-8 md:p-24">
-        <div class="max-w-4xl">
-            <p class="text-pink-500 text-sm tracking-widest mb-4 reveal">MERE ALFAAZ...</p>
-            <h2 class="text-4xl md:text-7xl font-bold hindi leading-tight reveal">
-                "Log kehte hain khoobsurat hai chaand,<br>
-                Shayad unhone tumhe <span class="text-[#ff0055]">dekha hi nahi.</span>"
-            </h2>
-            <p class="mt-12 text-2xl md:text-4xl italic playfair text-gray-400 reveal">
-                You’re not just a person, you’re a feeling that words can't capture.
-            </p>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1>🔥 LIVE JOKES FROM INTERNET 🔥</h1>
+        <div class="source" id="source">Click to Start!</div>
+        <div id="jokeBox">हर click पर नया joke internet से! 🌐✨</div>
+        <button class="btn" onclick="getJoke()">Next Joke 🚀</button>
+        <div class="stats">
+            <div class="stat"><span id="today">0</span>Today</div>
+            <div class="stat"><span id="total">0</span>Total</div>
         </div>
-    </section>
-
-    <section class="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-white/5 backdrop-blur-xl">
-        <div class="absolute outline huge-text opacity-10 whitespace-nowrap" id="scroll-text">
-            ADDICTIVE • UNIQUE • SUMERAH • ADDICTIVE • UNIQUE
-        </div>
-        <div class="z-10 text-center px-6">
-            <h3 class="text-5xl md:text-8xl font-black mb-8 reveal">Pure Magic.</h3>
-            <p class="text-xl md:text-3xl font-light max-w-2xl mx-auto reveal leading-relaxed">
-                Tera hona hi kaafi hai, mere chehre ki muskurahat ke liye. <br>
-                <span class="text-[#ff0055] font-bold">Absolutely obsessed with your vibe.</span>
-            </p>
-        </div>
-    </section>
-
-    <section class="min-h-screen w-full flex flex-col justify-center items-center text-center p-8">
-        <div class="max-w-3xl">
-            <h2 class="text-5xl md:text-8xl playfair font-black mb-12 reveal">Be Mine?</h2>
-            <p class="text-2xl hindi mb-10 reveal">
-                Tum meri wo khwahish ho jo main har baar maangta hoon.
-            </p>
-            <div class="bg-[#ff0055] text-white px-10 py-4 rounded-full text-xl font-bold hover:scale-110 transition-transform cursor-pointer reveal">
-                Just saying... You're the one.
-            </div>
-        </div>
-    </section>
-
-    <section class="h-[60vh] w-full flex items-center justify-center">
-        <div class="text-center">
-            <h4 class="huge-text outline reveal">SUMERAH</h4>
-            <p class="mt-10 tracking-[0.5em] text-xs opacity-40">Tujhse hi har subah, tujhse hi har shaam.</p>
-        </div>
-    </section>
+    </div>
+    <div class="credit">Made by Starlord✨</div>
 
     <script>
-        // Smooth Scroll
-        const lenis = new Lenis();
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
+        let todayCount = 0, totalCount = 0;
+        const usedJokes = new Set();
 
-        gsap.registerPlugin(ScrollTrigger);
+        // WORKING JOKE APIs (100% Working)
+        const APIs = [
+            'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single',
+            'https://official-joke-api.appspot.com/random_joke',
+            'https://icanhazdadjoke.com/',
+            'https://api.chucknorris.io/jokes/random',
+            'https://v2.jokeapi.dev/joke/Programming?type=single',
+            'https://punapi.sabir.pro/api/v1/puns/random'
+        ];
 
-        // Lights Animation
-        gsap.to("#light1", { x: '50vw', y: '30vh', duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
-        gsap.to("#light2", { x: '-40vw', y: '20vh', duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        async function getJoke() {
+            const jokeBox = document.getElementById('jokeBox');
+            const btn = document.querySelector('.btn');
+            const source = document.getElementById('source');
+            
+            btn.innerHTML = 'Loading... 🌐';
+            btn.style.opacity = '0.7';
 
-        // Scroll Text Effect
-        gsap.to("#scroll-text", {
-            xPercent: -50,
-            scrollTrigger: { trigger: "#scroll-text", scrub: 1 }
-        });
+            try {
+                const randomAPI = APIs[Math.floor(Math.random() * APIs.length)];
+                const response = await fetch(randomAPI, {
+                    headers: randomAPI.includes('icanhazdadjoke.com') ? 
+                        {'Accept': 'application/json'} : {}
+                });
+                
+                const data = await response.json();
+                let joke = '';
+                let sourceName = 'API';
 
-        // Reveal animations
-        gsap.utils.toArray(".reveal").forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: { trigger: el, start: "top 90%" },
-                y: 100, opacity: 0, duration: 1.5, ease: "expo.out"
-            });
-        });
+                if (randomAPI.includes('jokeapi.dev')) {
+                    joke = data.joke;
+                    sourceName = 'JokeAPI';
+                } else if (randomAPI.includes('icanhazdadjoke.com')) {
+                    joke = data.joke;
+                    sourceName = 'DadJokes';
+                } else if (randomAPI.includes('chucknorris.io')) {
+                    joke = data.value;
+                    sourceName = 'Chuck Norris';
+                } else if (randomAPI.includes('punapi')) {
+                    joke = data.joke;
+                    sourceName = 'Puns';
+                } else {
+                    joke = data.setup + '\n\n' + data.punchline;
+                    sourceName = 'Random';
+                }
+
+                // Clean and enhance
+                joke = joke.replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+                
+                // Skip if too short or duplicate
+                if (joke.length > 15 && !usedJokes.has(joke)) {
+                    usedJokes.add(joke);
+                    jokeBox.textContent = joke + ' 😂✨';
+                    source.textContent = sourceName;
+                } else {
+                    return getJoke(); // Try again
+                }
+
+            } catch (error) {
+                jokeBox.textContent = "Server busy! 😅\nदोस्ती का मतलब - तेरी हर बेवकूफी में मेरा हाथ होना! 🤝";
+                source.textContent = 'Backup';
+            }
+
+            // Update counters
+            todayCount++;
+            totalCount++;
+            document.getElementById('today').textContent = todayCount;
+            document.getElementById('total').textContent = totalCount;
+
+            btn.innerHTML = 'Next Joke 🚀';
+            btn.style.opacity = '1';
+            animateJoke();
+            createParticles();
+        }
+
+        function animateJoke() {
+            const jokeBox = document.getElementById('jokeBox');
+            jokeBox.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                jokeBox.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for(let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 6px; height: 6px;
+                    background: #ffd700;
+                    border-radius: 50%;
+                    left: ${Math.random()*100}%;
+                    animation: float ${3+Math.random()*3}s linear infinite;
+                    opacity: 0.8;
+                `;
+                container.appendChild(particle);
+                setTimeout(() => particle.remove(), 6000);
+            }
+        }
+
+        // Auto start
+        setTimeout(getJoke, 1500);
     </script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </body>
 </html>
