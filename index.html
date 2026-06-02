@@ -1,136 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>😂 Hindi Jokes Never Repeat 😂</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            font-family:'Poppins',sans-serif;
-            background:linear-gradient(-45deg,#ff9a9e,#fecfef,#fecfef,#ff9a9e);
-            background-size:400% 400%;
-            animation:gradientBG 12s ease infinite;
-            height:100vh;
-            display:flex;justify-content:center;align-items:center;overflow:hidden;
-        }
-        @keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-        .container{
-            background:rgba(255,255,255,0.15);backdrop-filter:blur(25px);border-radius:30px;
-            padding:50px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.2);
-            border:1px solid rgba(255,255,255,0.3);max-width:700px;width:90%;
-        }
-        h1{font-size:2.8em;background:linear-gradient(45deg,#fff,#ffeb3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;font-weight:800;}
-        .source{background:rgba(0,0,0,0.3);color:#fff;padding:12px 30px;border-radius:30px;margin:20px auto;font-weight:700;font-size:1.1em;max-width:250px;}
-        #jokeBox{background:rgba(255,255,255,0.95);padding:45px;border-radius:25px;margin:30px 0;min-height:180px;display:flex;align-items:center;justify-content:center;font-size:1.5em;line-height:1.7;color:#2c3e50;box-shadow:0 20px 50px rgba(0,0,0,0.15);transition:all 0.4s ease;}
-        .btn{background:linear-gradient(45deg,#ff5722,#ff8a50);border:none;padding:22px 60px;font-size:1.3em;font-weight:800;color:white;border-radius:50px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 15px 40px rgba(255,87,34,0.4);text-transform:uppercase;letter-spacing:2px;}
-        .btn:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 30px 60px rgba(255,87,34,0.6);}
-        .btn.loading{background:#666;cursor:not-allowed;opacity:0.7;}
-        .stats{display:flex;justify-content:space-around;margin-top:30px;color:rgba(255,255,255,0.95);font-weight:700;}
-        .stat span{font-size:2.5em;color:#ffeb3b;display:block;}
-        .credit{position:absolute;bottom:25px;right:25px;color:rgba(255,255,255,0.95);font-size:1.2em;font-weight:800;}
-        .particles{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Sumerah ✨</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:system-ui,sans-serif;
+color:#fff;overflow-x:hidden;
+background:linear-gradient(-45deg,#120018,#29003f,#57106e,#ff6bb3);
+background-size:400% 400%;
+animation:aurora 15s ease infinite;
+scroll-behavior:smooth;
+}
+@keyframes aurora{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.loader{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;z-index:9999;transition:1s}
+.glass{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:30px}
+section{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px}
+.hero{text-align:center}
+.hero h1{font-size:clamp(2.5rem,8vw,5rem)}
+.btn{padding:15px 30px;border:none;border-radius:999px;cursor:pointer}
+.card{padding:20px;margin:12px}
+.stars span{font-size:2rem;cursor:pointer;padding:12px;display:inline-block;transition:.3s}
+.stars span:hover{transform:scale(1.4)}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);justify-content:center;align-items:center;padding:20px;z-index:99}
+.modalbox{max-width:700px;padding:25px}
+.float{position:fixed;width:4px;height:4px;background:#fff;border-radius:50%;opacity:.6;animation:up 12s linear infinite}
+@keyframes up{from{transform:translateY(100vh)}to{transform:translateY(-100px)}}
+.memory{transition:.4s}
+.memory:hover{transform:translateY(-10px) scale(1.03)}
+footer{padding:50px;text-align:center}
+</style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    <div class="container">
-        <h1>🔥 HINDI JOKES API 🔥</h1>
-        <div class="source" id="source">Internet Se Live!</div>
-        <div id="jokeBox">Har Click = Naya Hindi Joke! 🌐😂</div>
-        <button class="btn" onclick="getHindiJoke()">Naya Joke 🚀</button>
-        <div class="stats">
-            <div class="stat"><span id="today">0</span>Aaj</div>
-            <div class="stat"><span id="total">0</span>Total</div>
-        </div>
-    </div>
-    <div class="credit">Made by Starlord✨</div>
 
-    <script>
-        let today=0,total=0;const used=new Set();
+<div class="loader"><h1>Preparing Something Beautiful...</h1></div>
 
-        // HINDI JOKES APIs + Sources
-        const hindiSources=[
-            // Hindi Jokes APIs
-            {url:'https://hindi-jokes-api.herokuapp.com/random',name:'HindiAPI'},
-            {url:'https://api.jokes18.com/jokes?lang=hi&limit=1',name:'Jokes18'},
-            
-            // Shayari APIs
-            {url:'https://api.alphashayari.in/shayari/random',name:'Shayari'},
-            {url:'https://shayari-api.herokuapp.com/api/shayari',name:'LoveShayari'},
-            
-            // Meme/Status APIs
-            {url:'https://api.quotes18.com/v1/quotes?lang=hi&limit=1',name:'Status'},
-            {url:'https://hindistatusapi.in/api/hindi-status',name:'HindiStatus'},
-            
-            // Funny Quotes
-            {url:'https://api.hindijokelove.com/jokes/random',name:'JokeLove'}
-        ];
+<div id="particles"></div>
 
-        async function getHindiJoke(){
-            const box=document.getElementById('jokeBox'),btn=document.querySelector('.btn'),src=document.getElementById('source');
-            btn.innerHTML='Loading... 🌐';btn.classList.add('loading');
+<section class="hero">
+<div class="glass" style="padding:40px;max-width:900px">
+<p>22 June ✨</p>
+<h1 id="type"></h1>
+<br>
+<p>Some people arrive quietly... and somehow change the way ordinary days feel.</p>
+<br><br>
+<button class="btn" onclick="document.getElementById('story').scrollIntoView()">Begin Journey</button>
+<button class="btn" onclick="music()">🎵 Music</button>
+<audio id="bgm" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d6a51d95.mp3?filename=relaxing-145038.mp3">
+</audio>
+</div>
+</section>
 
-            try{
-                const api=hindiSources[Math.floor(Math.random()*hindiSources.length)];
-                const res=await fetch(api.url);
-                const data=await res.json();
-                
-                let joke='',sourceName=api.name;
-                
-                // Parse different API formats
-                if(api.url.includes('shayari')){joke=data.shayari||data.data||data[0];}
-                else if(api.url.includes('status')){joke=data.status||data.quote||data.data;}
-                else{joke=data.joke||data.message||data[0];}
-                
-                // Clean & Hindi enhance
-                joke=joke.replace(/\\n/g,'\n').replace(/&quot;/g,'"').trim();
-                
-                if(joke.length>20&&!used.has(joke)){
-                    used.add(joke);
-                    box.innerHTML=joke+' <span style="font-size:0.8em;">😂🔥</span>';
-                    src.textContent=sourceName;
-                }else{return getHindiJoke();}
-                
-            }catch(e){
-                // Backup Hindi jokes from different sources
-                const backups=[
-                    "Boss: Kal late kyun aaye?\nMain: Traffic tha sir!\nBoss: Aaj bhi traffic hoga?\nMain: Haan sir, main 9 baje aaunga! 😂",
-                    "Doctor: Aapko diabetes hai!\nPatient: Kitna serious hai?\nDoctor: Bahut! Aapko sweet khana band karna hoga!\nPatient: Arre toh main toh doctor ban gaya! 😎",
-                    "Ladka: Main tumse pyar karta hun!\nLadki: Kitna?\nLadka: Bahut!\nLadki: Kitna bahut?\nLadka: 2+2=?\nLadki: 4!\nLadka: Haan utna! 🤣",
-                    "Pappu: Teacher ji, zindagi kya hai?\nTeacher: Beta, zindagi ek struggle hai!\nPappu: Toh fir meri toh life mein koi struggle hi nahi! 😜",
-                    "Dost: Bhai breakup ho gaya!\nMain: Kyun?\nDost: Usne kaha 'Tu badal gaya hai!'\nMain: Toh tu bol 'Haan main toh waise bhi superhero banne wala hun!' 🦸‍♂️"
-                ];
-                const backup=Math.floor(Math.random()*backups.length);
-                box.innerHTML=backups[backup];
-                src.textContent='Desi Backup 🔥';
-            }
+<section id="story">
+<div class="glass" style="padding:35px;max-width:900px">
+<h2>The Unexpected Chapter</h2><br>
+<p>There was never a dramatic beginning. Just a collection of small moments that slowly became impossible to forget.</p><br>
+<p>Some conversations stay longer than expected.</p><br>
+<p>Some smiles become memories without permission.</p><br>
+<p>And some people quietly become special.</p>
+</div>
+</section>
 
-            today++;total++;
-            document.getElementById('today').textContent=today;
-            document.getElementById('total').textContent=total;
-            btn.innerHTML='Naya Joke 🚀';btn.classList.remove('loading');
-            animate();particles();
-        }
+<section>
+<div class="glass" style="padding:35px;max-width:900px">
+<h2>Things I Never Said</h2><br>
+<p>Not every meaningful thing needs a name.</p><br>
+<p>Some moments become memories before we realize they're happening.</p><br>
+<p>Some people are remembered. Some people are felt.</p><br>
+<p>The strange thing about meeting the right soul is that nothing changes at once, yet everything feels different.</p>
+</div>
+</section>
 
-        function animate(){
-            const box=document.getElementById('jokeBox');
-            box.style.transform='scale(0.95)';setTimeout(()=>box.style.transform='scale(1)',200);
-        }
+<section>
+<div class="glass" style="padding:35px;text-align:center">
+<h2>Constellation</h2><br>
+<div class="stars">
+<span onclick="msg('Thank you for making ordinary days feel less ordinary.')">⭐</span>
+<span onclick="msg('Your presence has a way of making silence comfortable.')">⭐</span>
+<span onclick="msg('You have no idea how many smiles you are responsible for.')">⭐</span>
+<span onclick="msg('The universe hides beautiful things in unexpected places.')">⭐</span>
+<span onclick="msg('Some people carry light without even realizing it.')">⭐</span>
+</div>
+</div>
+</section>
 
-        function particles(){
-            const cont=document.getElementById('particles');
-            for(let i=0;i<30;i++){
-                const p=document.createElement('div');
-                p.style.cssText=`position:absolute;width:8px;height:8px;background:#ffeb3b;border-radius:50%;left:${Math.random()*100}%;animation:float ${2+Math.random()*4}s linear infinite;opacity:0.8;`;
-                cont.appendChild(p);setTimeout(()=>p.remove(),5000);
-            }
-        }
+<section>
+<div class="glass" style="padding:35px;max-width:1000px">
+<h2>Memory Room</h2><br>
+<div class="memory card glass">Every conversation felt shorter than it actually was.</div>
+<div class="memory card glass">Some days are remembered because of events. Some because of people.</div>
+<div class="memory card glass">A few moments stay with us longer than they should.</div>
+</div>
+</section>
 
-        // Auto start
-        setTimeout(getHindiJoke,2000);
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>@keyframes float{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-20vh) scale(1.2);opacity:0;}}</style>
+<section>
+<div class="glass" style="padding:40px;text-align:center;max-width:900px">
+<h2>Why You Are Special</h2><br>
+<p>Because kindness looks natural on you.</p><br>
+<p>Because you make people feel seen.</p><br>
+<p>Because your laughter feels genuine.</p><br>
+<p>Because some people bring comfort without even trying.</p>
+</div>
+</section>
+
+<section>
+<div class="glass" style="padding:45px;text-align:center;max-width:900px">
+<h1>Happy Birthday, Sumerah ✨</h1><br>
+<p>May this year bring you the kind of happiness that stays.</p><br>
+<p>The kind of peace that heals.</p><br>
+<p>The kind of memories that become your favorite stories.</p><br>
+<p>Keep smiling. The world genuinely looks better when you do.</p>
+</div>
+</section>
+
+<footer>
+From Someone Who Wishes You The Best
+</footer>
+
+<div class="modal" id="modal">
+<div class="glass modalbox">
+<p id="m"></p><br>
+<button class="btn" onclick="closeM()">Close</button>
+</div>
+</div>
+
+<script>
+setTimeout(()=>document.querySelector('.loader').style.opacity='0',1800);
+setTimeout(()=>document.querySelector('.loader').style.display='none',2800);
+
+let t="A Small Journey For Someone Special";
+let i=0;
+let x=setInterval(()=>{
+document.getElementById('type').innerHTML+=t[i]||"";
+i++;
+if(i>t.length)clearInterval(x);
+},70);
+
+function msg(v){
+document.getElementById('m').innerText=v;
+document.getElementById('modal').style.display='flex';
+}
+function closeM(){document.getElementById('modal').style.display='none';}
+
+function music(){
+let a=document.getElementById('bgm');
+if(a.paused)a.play();else a.pause();
+}
+
+for(let i=0;i<60;i++){
+let d=document.createElement('div');
+d.className='float';
+d.style.left=Math.random()*100+'vw';
+d.style.animationDuration=(8+Math.random()*10)+'s';
+document.body.appendChild(d);
+}
+</script>
 </body>
-        </html>
+</html>
